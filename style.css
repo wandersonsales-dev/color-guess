@@ -54,17 +54,3 @@
   align-items: center;
   margin: 20px auto 0;
 }
-
-#showScore {
-  width: 50%;
-  height: auto;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-#score {
-  display: inline;
-}

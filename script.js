@@ -2,11 +2,9 @@ const divRGBColor = document.getElementById('rgb-color');
 const divBallOption = document.getElementById('ball-options');
 const answer = document.getElementById('answer');
 const idButtonReset = document.getElementById('reset-game');
-const idScore = document.getElementById('score');
 
 const color = () => Math.ceil(Math.random() * 255);
 let colorSelected = '';
-let score = 0;
 
 const showRGBonPage = () => {
   colorSelected = `(${color()}, ${color()}, ${color()})`;
@@ -19,22 +17,20 @@ const clearSelected = () => {
   }
 };
 
-const clearOptions = () => {
-  clearSelected();
-  for (let index = divBallOption.children.length - 1; index >= 0; index -= 1) {
-    divBallOption.children[index].remove();
-  }
-};
-
 const checkAnswer = (e) => {
   clearSelected();
   e.target.className = 'ball selected';
   if (e.target.style.backgroundColor === `rgb${colorSelected}`) {
     answer.innerHTML = '<strong>Acertou!</strong>';
-    score += 3;
-    idScore.innerHTML = score;
   } else {
     answer.innerHTML = '<strong>Errou! Tente novamente!</strong>';
+  }
+};
+
+const clearOptions = () => {
+  clearSelected();
+  for (let index = divBallOption.children.length - 1; index >= 0; index -= 1) {
+    divBallOption.children[index].remove();
   }
 };
 
@@ -58,13 +54,8 @@ const newGame = () => {
   answer.innerText = 'Escolha uma cor';
 };
 
-const showScore = () => {
-  idScore.innerHTML = score;
-};
-
 window.onload = () => {
   showRGBonPage();
-  showScore();
   generateOptions(6);
   idButtonReset.addEventListener('click', newGame);
 };
