@@ -1,6 +1,7 @@
 const divRGBColor = document.getElementById('rgb-color');
 const divBallOption = document.getElementById('ball-options');
 const answer = document.getElementById('answer');
+const idButtonReset = document.getElementById('reset-game');
 
 const color = () => Math.ceil(Math.random() * 255);
 let colorSelected = '';
@@ -26,6 +27,13 @@ const checkAnswer = (e) => {
   }
 };
 
+const clearOptions = () => {
+  clearSelected();
+  for (let index = divBallOption.children.length - 1; index >= 0; index -= 1) {
+    divBallOption.children[index].remove();
+  }
+};
+
 const generateOptions = (num) => {
   const positionAnswer = Math.ceil(Math.random() * 6);
   for (let index = 0; index < num; index += 1) {
@@ -39,7 +47,15 @@ const generateOptions = (num) => {
   }
 };
 
+const newGame = () => {
+  showRGBonPage();
+  clearOptions();
+  generateOptions(6);
+  answer.innerText = 'Escolha uma cor';
+};
+
 window.onload = () => {
   showRGBonPage();
   generateOptions(6);
+  idButtonReset.addEventListener('click', newGame);
 };
