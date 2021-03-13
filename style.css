@@ -30,3 +30,17 @@
   margin: 10px;
   border-radius: 100%;
 }
+
+.selected {
+  box-shadow: 0 0 10px red;
+}
+
+#description {
+  width: 50%;
+  height: auto;
+  margin: 30px auto 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
