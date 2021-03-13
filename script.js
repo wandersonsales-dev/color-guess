@@ -2,9 +2,11 @@ const divRGBColor = document.getElementById('rgb-color');
 const divBallOption = document.getElementById('ball-options');
 const answer = document.getElementById('answer');
 const idButtonReset = document.getElementById('reset-game');
+const idScore = document.getElementById('score');
 
 const color = () => Math.ceil(Math.random() * 255);
 let colorSelected = '';
+let score = 0;
 
 const showRGBonPage = () => {
   colorSelected = `(${color()}, ${color()}, ${color()})`;
@@ -22,6 +24,8 @@ const checkAnswer = (e) => {
   e.target.className = 'ball selected';
   if (e.target.style.backgroundColor === `rgb${colorSelected}`) {
     answer.innerHTML = '<strong>Acertou!</strong>';
+    score += 3;
+    idScore.innerText = score;
   } else {
     answer.innerHTML = '<strong>Errou! Tente novamente!</strong>';
   }
@@ -35,7 +39,8 @@ const clearOptions = () => {
 };
 
 const generateOptions = (num) => {
-  const positionAnswer = Math.ceil(Math.random() * 6);
+  const positionAnswer = Math.round(Math.random() * 5);
+  console.log(positionAnswer);
   for (let index = 0; index < num; index += 1) {
     const newEl = document.createElement('div');
     newEl.className = 'ball';
